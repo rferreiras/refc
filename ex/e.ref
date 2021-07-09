@@ -1,0 +1,63 @@
+{
+	lista de palabras reservadas:["if,main,print,is a,in,what is,funcion,number,string "]
+	#una variable
+	New Line:"\n",
+	#una funcion
+	Hola(msg:""):{
+		if[msg=""]:{
+			msg:"mundo"
+		},
+		print:"hola $msg" 
+	}
+	#una clase
+	mi clase:{
+		nombre:"",
+		apellido:"",
+		edad:0[0..]
+		Fecha Nacimiento:{
+			dia:0[1..31],
+			mes:0[1..12],
+			año:0[1900..2200]
+		}
+		nombre completo():{
+			return nombre+" "+apellido
+		}
+	}
+	#funcion principal
+	main():{
+		Hola:["mundo mundial"],
+		Un Array 1:["12",1,Hola,1.2,{nombre:"Jose",apellido:"Perez",email:"jp@gmail.com", Mi Telefono:"232-093-9876"}],
+		# esto es un comentario
+		#construcio de una clase
+		[mi clase]Un objeto:{
+			nombre:"Roman",
+			apellido:"ferreiras",
+			Fecha Nacimiento:[31,8,1974]
+		},
+		#forma corta
+		[mi clase]Un objeto 2:["Roman","ferreiras",[31,8,1974]],
+		print:[Un objeto 2->nombre,New Line]
+		b:0,
+		#bucle de 1 a 10
+		vamos a la playa[1..10]:{
+			b:+vamos a la playa,
+			print:"$vamos a la playa ohh uo uo ohhh $New Line",
+			print:[vamos a la playa,"ohh uo uo ohhh", New Line]
+		},
+		print:"fuimos a la playa $b veces $New Line",
+		#bucle con un array
+			varB:0,
+		i[Un Array 1]:{
+			varA:+"$i,",
+			varB:+i,
+			if[i->nombre,i->apellido]:{
+				print:[i->nombre,i->apellido,New Line]
+			},
+			if[i is a funcion]:{
+				print:"$i es una funcion $New Line"
+			}
+
+		}
+
+	}
+}

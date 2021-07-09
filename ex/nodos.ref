@@ -1,0 +1,36 @@
+{
+	tipo nodo:{
+		nombre:"",
+		value:0,
+		p entrada:0,
+		p salidaa:0,
+		[tipo nodo]entrada:[],
+		[tipo nodo]salida:[],
+		run():{
+			ve:0,
+			vs:0,
+			i[entrada]:{
+				ve:+i->value
+			},
+			i[salida]:{
+				vs:+i->value,
+				i->value:+ve
+			}
+			vp:ve+vs
+		}
+	},
+	main(){
+		[tipo nodo]a:{nombre:"roman",value:10}
+		[tipo nodo]b:{nombre:"Ernesto",value:5},
+		[tipo nodo]c:{nombre:"Ferreiras",value:1},
+		a->salida:+b,
+		b->entrada:+a,
+		b->salida:+c,
+		c->entrada:+b,
+		c->salida:+a,
+		a->run,
+		b->run,
+		c->run,
+		
+	}
+}
