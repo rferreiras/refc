@@ -40,6 +40,7 @@ regex floatReg(regxFloatStr, regex::ECMAScript);
 regex dobleFloatReg(regxDobleFloatStr, regex::ECMAScript);
 /**************************************************************************************/
 // const char regxFunctionStr[]=".+[(].*[)]{";
+const char *palabrasReservadas[]={"print","else","if","retun","main","in","not","type of"};
 enum TipoDatos
 {
     String,
@@ -62,7 +63,7 @@ struct SDeclaracionesFunciones
 };
 map<string, SDeclaracionesFunciones> listaFunciones;
 /**************************************************************************************/
-TipoDatos getTipoDatos(string s)
+TipoDatos Get_Tipo_Datos(string s)
 {
     if (s == "0")
     {
@@ -85,7 +86,7 @@ TipoDatos getTipoDatos(string s)
         return TipoDatos::Double;
     }
 }
-vector<string> spitStr(const string S, string D = ",")
+vector<string> Spit_String(const string S, string D = ",")
 {
     vector<string> r;
     size_t pos = 0,
@@ -104,7 +105,7 @@ vector<string> spitStr(const string S, string D = ",")
     return r;
 }
 // vector<SDeclaracionesFunciones> listaFunciones;
-string analizaFuncion(string s)
+string Analiza_Funcion(string s)
 {
     //rututu klk( para1:"",para2:0.0f,paeya:0,parametro:[]){
     size_t posParentesis = s.find_first_of("(", 0);
@@ -112,17 +113,17 @@ string analizaFuncion(string s)
     string nombre = s.substr(0, posParentesis);
     SDeclaracionesFunciones funcion;
     string parametros = s.substr(posParentesis + 1, posCierreParentesis - (posParentesis + 1));
-    printf("*******\n%i,%i '%s'\n*******\n%s\n*********\n", posParentesis, posCierreParentesis, nombre.c_str(), parametros.c_str());
+    // printf("*******\n%i,%i '%s'\n*******\n%s\n*********\n", posParentesis, posCierreParentesis, nombre.c_str(), parametros.c_str());
     if (listaFunciones.find(nombre) == listaFunciones.end())
     {
         funcion.nombre = nombre;
-        auto paran1 = spitStr(parametros);
+        auto paran1 = Spit_String(parametros);
         for (size_t i = 0; i < paran1.size(); i++)
         {
-            auto paran2 = spitStr(paran1[i], ":");
+            auto paran2 = Spit_String(paran1[i], ":");
             SParametrosFunciones paran3;
             paran3.Nombre = paran2[0];
-            paran3.Tipo = getTipoDatos(paran2[1]);
+            paran3.Tipo = Get_Tipo_Datos(paran2[1]);
             paran3.ValorPorDefecto = paran2[1];
             funcion.parametros.push_back(paran3);
         }
@@ -153,7 +154,7 @@ int main()
         if (regex_match(s, m, functionReg))
         {
             salidaStr += "Funcion encontrada :" + s + "\n";
-            funcionActual=analizaFuncion(s);
+            funcionActual=Analiza_Funcion(s);
         }
 /************************************************************************************************************************************************/
         if (regex_match(s, m, callReturnFunctionReg))
@@ -179,7 +180,11 @@ int main()
         }
         if (regex_match(s, m2, floatReg))
         {
-            salidaStr += "AsignacionfunctionReg de punto flotante doble:" + s + ":\t" + to_string(linea) + "\n";
+            salidaStr += "Asignacion de punto flotante:" + s + ":\t" + to_string(linea) + "\n";
+        }
+        if (regex_match(s, m2, dobleFloatReg))
+        {
+            salidaStr += "Asignacion de punto flotante doble:" + s + ":\t" + to_string(linea) + "\n";
         }
 /************************************************************************************************************************************************/
         if (regex_match(s, m2, returnStringReg))
@@ -237,5 +242,5 @@ int main()
     {
         cout << i->second.nombre << endl;
     }
-    // cout << rr << endl << "end." << endl;
+    cout << rr << endl << "end." << endl;
 }
