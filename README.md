@@ -7,9 +7,9 @@ Algunas de sus caracteristicas son:
 
 * los nombres de varibles y funciones pueden incluir espacios
 * el tipo de una varible esta definida por el primer valor que se le asigna
-* el pipo de variable puede cambiar
-* compila a c++ , en el futuro compilara a lenguaje ensamblador
-* el codigo en c++ es compacto, facil y humanamente legible, nada de runtime 
+* el tipo de variable puede cambiar como en javaScript
+* compila a c++ , en el futuro compilara a lenguaje ensamblador(algun dia)
+* el codigo en c++ es compacto, facil y humanamente legible, nada de runtime /traduc.cpp es un ejemplo del codigo generado por el complilador
 * la asignacion de valor a una variable se hace con ":"
 * la comparacion de igualdad usa el signo de "=" una sola vez
 * permite comparar varibles de tipos de datos diferentes por ejemplo "0"=0.0f 
@@ -17,7 +17,7 @@ Algunas de sus caracteristicas son:
 * permite comparar o buscar en un array con la palabra "in"
 * en lugar de usar "for(i=0;i < 10; i++ ){/* bloque codigo*/}" se usa "var[0..9]{## bloque codigo ##}"
 * usa "#" para comentario de una linea y "##" para comenrario por bloque
-* una fucion puede retornar diferentes tipo de valores  
+* una fucion puede retornar diferentes tipos de valores como en javaScript
 * como todo buen lenguaje de uso general permite variables globales
 
 tipos de datos nativos
