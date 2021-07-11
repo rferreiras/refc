@@ -44,7 +44,8 @@ refc
 this is how looks now
 
 {
-    NewLine:"\n", 
+
+    NewLine:"\n",     
     funcion de prueva( para1:"",para2:0.0f,paeya:0,parametro:[]){
         variable numero 1:["Hello world","Hola que tal",5,200.544],
         print(variable numero 1,NewLine),
