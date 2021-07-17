@@ -134,7 +134,7 @@ string Analiza_Funcion(string s)
 /**************************************************************************************/
 int main()
 {
-    ifstream in("main.r"); // Open for reading
+    ifstream in("main.newt"); // Open for reading
     string s;
     string rr = "";
     string funcionActual="";
